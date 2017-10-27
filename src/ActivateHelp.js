@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Switch, Image, Button } from 'react-native';
 import { Constants, Notifications } from 'expo';
-
-const FONT_SIZE = 25
-const BODY_FONT_SIZE = FONT_SIZE - 5;
-const BG_COLOR = '#373854',
-      TEXT_COLOR = '#FFFFFF',
-      BUTTON_COLOR = '#4F507F';
+import { FONT_SIZE, BODY_FONT_SIZE, BG_COLOR, TEXT_COLOR, BUTTON_COLOR } from './ProjectConstants'
 
 export default class ActivateHelp extends Component 
 {

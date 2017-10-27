@@ -11,13 +11,10 @@ import {
   Dimensions,
   Platform,
 } from 'react-native';
-import Popover from 'react-native-modal-popover'; // 0.0.2
+import Popover from 'react-native-modal-popover';
+import { FONT_SIZE, HELPER_FONT_SIZE, HELPER_BODY_FONT_SIZE, BG_COLOR, TEXT_COLOR, SPECIAL_COLOR } from './ProjectConstants'
 
-const POPOVER_FONT_SIZE = 25, PADDING_POPOVER = 16;
-    
-const BG_COLOR = '#373854',
-      TEXT_COLOR = '#FFFFFF',
-      SPECIAL_COLOR = '#7E80BF';
+const PADDING_POPOVER = 16;
     
 const data = 
 [
@@ -76,7 +73,7 @@ const specials =
 [
   {
     item: 'snap',
-    desc: 'Um snap é uma imagem ou vídeo, que você envia à alguma pessoa, com duração máxima de 10 segundos.',
+    desc: 'Um snap é uma imagem ou vídeo, que você envia a uma ou várias pessoas.',
   },
 ];
 
@@ -254,7 +251,7 @@ export default class FunctionList extends Component
           contentStyle = {{ padding: PADDING_POPOVER, borderRadius: 8 }}
           placement = { this.state.placement }
         >
-            <Text style={{ fontSize: POPOVER_FONT_SIZE, width: width - 50 }} onLayout = { this.onLayout }>
+            <Text style={{ fontSize: FONT_SIZE, width: width - 50 }} onLayout = { this.onLayout }>
               {this.state.popoverData}
             </Text>
         </Popover>
@@ -315,7 +312,7 @@ const styles = StyleSheet.create({
 
   textHeader:
   {
-    fontSize: 52,
+    fontSize: HELPER_FONT_SIZE,
     fontWeight: 'bold',
     textAlign: 'center',
     color: TEXT_COLOR,
@@ -323,7 +320,7 @@ const styles = StyleSheet.create({
 
   subtitleHeader:
   {
-    fontSize: 26,
+    fontSize: HELPER_BODY_FONT_SIZE - 2,
     fontWeight: 'bold',
     textAlign: 'center',
     paddingBottom: 24,
@@ -334,7 +331,7 @@ const styles = StyleSheet.create({
   item:
   {
     textAlignVertical: 'center',
-    fontSize: 28,
+    fontSize: HELPER_BODY_FONT_SIZE,
     color: TEXT_COLOR,
     fontWeight: '500',
   },
@@ -342,7 +339,7 @@ const styles = StyleSheet.create({
   special:
   {
     textAlignVertical: 'center',
-    fontSize: 28,
+    fontSize: HELPER_BODY_FONT_SIZE,
     color: SPECIAL_COLOR,
     textDecorationLine: 'underline',
     fontWeight: '500',

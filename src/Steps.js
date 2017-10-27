@@ -8,11 +8,7 @@ import {
   Image,
   ActivityIndicator
 } from 'react-native';
-
-const BG_COLOR = '#373854',
-  TEXT_COLOR = '#FFFFFF',
-  NAVIGATOR_COLOR = '#4F507F',
-  BUTTON_COLOR = '#4F507F';
+import { HELPER_BODY_FONT_SIZE, BG_COLOR, TEXT_COLOR, NAVIGATOR_COLOR, BUTTON_COLOR } from './ProjectConstants'
     
 export default class Steps extends Component 
 {   
@@ -68,8 +64,8 @@ export default class Steps extends Component
             style =
             {{
               fontSize: state.params.functionality.length < 18
-                ? 30
-                : state.params.functionality.length <= 26 ? 24 : 18,
+                ? HELPER_BODY_FONT_SIZE + 2
+                : state.params.functionality.length <= 26 ? HELPER_BODY_FONT_SIZE - 4 : HELPER_BODY_FONT_SIZE - 10,
               fontWeight: 'bold',
               textAlign: 'center',
               paddingBottom: 6,
@@ -145,13 +141,13 @@ const styles2 = StyleSheet.create({
   bodyText:
   {
     paddingBottom: 15,
-    fontSize: 22,
+    fontSize: HELPER_BODY_FONT_SIZE - 7,
     color: TEXT_COLOR,
   },
 
   subtitleHeader:
   {
-    fontSize: 22,
+    fontSize: HELPER_BODY_FONT_SIZE - 7,
     textAlign: 'center',
     color: TEXT_COLOR,
   },
