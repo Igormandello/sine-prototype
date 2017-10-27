@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Switch, Image, Dimensions, StatusBar, Button, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Switch, Image, Button } from 'react-native';
 import { Constants, Notifications } from 'expo';
 
-const FONT_SIZE = 25;
+const FONT_SIZE = 25
 const BODY_FONT_SIZE = FONT_SIZE - 5;
 const BG_COLOR = '#373854',
       TEXT_COLOR = '#FFFFFF',
-      SPECIAL_COLOR = '#7E80BF',
-      NAVIGATOR_COLOR = '#4F507F',
       BUTTON_COLOR = '#4F507F';
 
 export default class ActivateHelp extends Component 
@@ -53,9 +51,6 @@ export default class ActivateHelp extends Component
     Notifications.presentLocalNotificationAsync({
       title: 'Ajuda em aplicativos ativada!',
       body: 'Clique para abrir a ajuda',
-      data: {
-        hello: 'there',
-      },
       ios: {
         sound: true,
       },
@@ -73,23 +68,25 @@ export default class ActivateHelp extends Component
     
     return (
       <View style = { styles.container }>
-          <View style = { styles.containerBanner }>
+          <View style = { styles.bannerContainer }>
             <Image
             source = {{ uri:'http://i0.kym-cdn.com/photos/images/facebook/000/839/199/8a9.jpg' }}
             style = { styles.banner }
             />
           </View>
             
-          <View style = { styles.containerBody }>
-            <View style = { styles.containerAjuda }>
-              <Text style = {{ fontSize: FONT_SIZE, color: TEXT_COLOR }}>Ajuda nos aplicativos</Text>
+          <View style = { styles.bodyContainer }>
+            <View style = { styles.helpContainer }>
+              <Text style = {{ fontSize: FONT_SIZE, color: TEXT_COLOR, paddingBottom: 6 }}>
+                Ajuda nos aplicativos
+              </Text>
               <Switch
                 onValueChange = { this._handleToggleSwitch }
                 value = { this.state.switchValue }
               />
             </View>
             
-            <Text style = {styles.textAjuda }> 
+            <Text style = { styles.helpText }> 
               In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor.
             </Text>
             
@@ -98,7 +95,7 @@ export default class ActivateHelp extends Component
               title = "Como Funciona?"
               color = { BUTTON_COLOR }
               accessibilityLabel = "Saiba mais sobre como funciona o aplicativo."
-              style = { styles.comoFunciona }
+              style = { styles.howItWorksButton }
             />
           </View>
       </View>
@@ -109,14 +106,13 @@ export default class ActivateHelp extends Component
 const styles = StyleSheet.create({
   container: 
   {
-    flex: 3,
+    flex: 1,
     backgroundColor: BG_COLOR,
     paddingTop: Constants.statusBarHeight,
   },
   
-  containerBanner: 
+  bannerContainer: 
   {
-    flex : 1,
     paddingTop: 35,
     paddingHorizontal: 35,
     paddingBottom: 12,
@@ -124,9 +120,8 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
   
-  containerBody: 
+  bodyContainer: 
   {
-    flex: 2,
     flexDirection: 'column',
     paddingTop: 35,
     paddingHorizontal: 35,
@@ -134,43 +129,25 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   
-  containerAjuda: 
+  helpContainer: 
   {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   
-  textAjuda: 
+  helpText: 
   {
     textAlign: 'justify',
-    paddingVertical: 25,
+    paddingVertical: 18,
     fontSize: BODY_FONT_SIZE,
     color: TEXT_COLOR,
   },
   
-  comoFunciona:
+  howItWorksButton:
   {
     resizeMode: 'contain',
     fontSize: FONT_SIZE,
     color: TEXT_COLOR,
-  },
-  
-  containerCF:
-  {
-    flex: 1,
-    flexDirection: 'column',
-    paddingHorizontal: 35,
-    paddingTop: 5,
-    alignItems: 'stretch',
-    justifyContent: 'space-around',
-    backgroundColor: BG_COLOR,
-  },
-  
-  containerBannerCF: 
-  {
-    flex : 1,
-    justifyContent: 'space-around',
-    alignItems: 'stretch',
   },
   
   banner:
