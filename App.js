@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import SineInitial from './screens/Initial'
 import SineApp from './screens/Helper'
 
-export default class App extends React.Component
+export default class App extends Component
 {
   state =
   {
