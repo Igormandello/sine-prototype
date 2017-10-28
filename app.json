@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "sine-prototipo",
-    "description": "Interface helper",
-    "slug": "sine-prototipo",
+    "name": "sine-prototype",
+    "description": "Helper for seniors to use any application",
+    "slug": "sine-prototype-1.0",
     "privacy": "public",
     "sdkVersion": "20.0.0",
     "version": "1.0.0",
     "orientation": "portrait",
-    "primaryColor": "#cccccc",
+    "primaryColor": "#373854",
     "icon": "./assets/icons/app-icon.png",
     "loading": {
       "icon": "./assets/icons/loading-icon.png",
