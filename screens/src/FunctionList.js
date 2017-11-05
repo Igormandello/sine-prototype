@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Constants } from 'expo';
 import {
   Text,
   View,
@@ -10,12 +9,15 @@ import {
   Image,
   Dimensions,
   Platform,
+  NativeModules
 } from 'react-native';
 import Popover from 'react-native-modal-popover';
 import { FONT_SIZE, HELPER_FONT_SIZE, HELPER_BODY_FONT_SIZE, BG_COLOR, TEXT_COLOR, SPECIAL_COLOR } from './ProjectConstants'
 
 const PADDING_POPOVER = 16;
-    
+const { StatusBarManager } = NativeModules;
+const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT;
+
 const data = 
 [
   {
@@ -77,7 +79,7 @@ const specials =
   },
 ];
 
-export default class FunctionList extends Component 
+class FunctionList extends Component 
 {
   btns = [];
   specialsN = 0;
@@ -114,7 +116,7 @@ export default class FunctionList extends Component
       this.state.popoverRect.y +
         this.heightPop +
         2 * PADDING_POPOVER +
-        Constants.statusBarHeight +
+        STATUSBAR_HEIGHT +
         100 >
       height
     )
@@ -215,7 +217,7 @@ export default class FunctionList extends Component
     {
       this.setState({
         popoverVisible: true,
-        popoverRect: { x: px, y: py - (Platform.OS != 'ios' ? 20 : 0), width: width, height: height },
+        popoverRect: { x: px, y: py + (Platform.OS != 'ios' ? 15 : 0), width: width, height: height },
         popoverData: specials[n].desc,
         placement: 'bottom',
       });
@@ -281,7 +283,7 @@ const styles = StyleSheet.create({
   {
     flex: 1,
     paddingHorizontal: 35,
-    paddingTop: Constants.statusBarHeight,
+    paddingTop: STATUSBAR_HEIGHT,
     backgroundColor: BG_COLOR,
   },
 
@@ -345,3 +347,5 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
 });
+
+module.exports = FunctionList;

@@ -2,7 +2,7 @@
   "expo": {
     "name": "sine-prototype",
     "description": "Helper for seniors to use any application",
-    "slug": "sine-prototype-1.0",
+    "slug": "sine-prototype-1.1",
     "privacy": "public",
     "sdkVersion": "20.0.0",
     "version": "1.0.0",
@@ -17,7 +17,11 @@
       "assetExts": ["ttf", "mp4"]
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sineapp.sine"
+    },
+    "android": {
+      "package": "com.sineapp.sine"
     }
   }
 }

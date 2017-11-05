@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { Constants } from 'expo';
 import {
   Text,
   View,
   StyleSheet,
   Button,
   Image,
-  ActivityIndicator
+  ActivityIndicator,
+  NativeModules
 } from 'react-native';
 import { HELPER_BODY_FONT_SIZE, BG_COLOR, TEXT_COLOR, NAVIGATOR_COLOR, BUTTON_COLOR } from './ProjectConstants'
-    
-export default class Steps extends Component 
+
+class Steps extends Component 
 {   
   loaded = false;
   
@@ -18,7 +18,6 @@ export default class Steps extends Component
   {
     title: 'Voltar para a lista',
     headerStyle: {
-      marginTop: Constants.statusBarHeight,
       backgroundColor: NAVIGATOR_COLOR,
     },
     headerTintColor: 'white',
@@ -152,3 +151,5 @@ const styles2 = StyleSheet.create({
     color: TEXT_COLOR,
   },
 });
+
+module.exports = Steps;

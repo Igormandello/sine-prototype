@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { Constants } from 'expo';
 import { FONT_SIZE, BODY_FONT_SIZE, BG_COLOR, TEXT_COLOR, NAVIGATOR_COLOR } from './ProjectConstants'
 
-export default class HowItWorks extends Component 
+class HowItWorks extends Component 
 {
   static navigationOptions = 
   {
@@ -11,7 +10,6 @@ export default class HowItWorks extends Component
     headerStyle: 
     {
       backgroundColor: NAVIGATOR_COLOR,
-      marginTop: Constants.statusBarHeight,
     },
     headerTintColor: 'white',
   }
@@ -73,3 +71,5 @@ const styles = StyleSheet.create({
     resizeMode : 'contain',
   },
 });
+
+module.exports = HowItWorks;

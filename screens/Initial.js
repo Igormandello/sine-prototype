@@ -1,6 +1,8 @@
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import HowItWorks from '../src/HowItWorks';
-import ActivateHelp from '../src/ActivateHelp';
+import ActivateHelp from './src/ActivateHelp';
+import HowItWorks from './src/HowItWorks';
 
 const SineInitial = StackNavigator(
 {

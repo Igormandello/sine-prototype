@@ -1,6 +1,6 @@
 import { StackNavigator } from 'react-navigation'; // 1.0.0-beta.13
-import Steps from '../src/Steps';
-import FunctionList from '../src/FunctionList';
+import Steps from './src/Steps';
+import FunctionList from './src/FunctionList';
 
 const SineApp = StackNavigator(
   {
@@ -18,4 +18,4 @@ const SineApp = StackNavigator(
   { headerMode: 'screen' }
 );
 
-export default SineApp;
+module.exports = SineApp;

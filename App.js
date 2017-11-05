@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import SineInitial from './screens/Initial'
-import SineApp from './screens/Helper'
+import SineInitial from './screens/Initial';
+import SineApp from './screens/Helper';
 
 export default class App extends Component
 {
@@ -12,9 +12,9 @@ export default class App extends Component
 
   _notification = ntf =>
   {
-    let { origin } = ntf;
+    let { userInteraction } = ntf;
     
-    if (origin != 'received')
+    if (userInteraction == true)
       this.setState({ helperActivated: true });
   }
   
