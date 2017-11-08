@@ -1,21 +1,45 @@
-import { StackNavigator } from 'react-navigation'; // 1.0.0-beta.13
-import Steps from './src/Steps';
-import FunctionList from './src/FunctionList';
+import React, { Component } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import ChatHead from './src/ChatHead';
+import Popover, { PopoverTouchable } from 'react-native-modal-popover';
 
-const SineApp = StackNavigator(
+class Helper extends Component
+{
+  render()
   {
-    Index: {
-      screen: FunctionList,
-      header: null,
-      navigationOptions: {
-        header: null,
-      },
-    },
-    Tutorial: {
-      screen: Steps,
-    },
-  },
-  { headerMode: 'screen' }
-);
+    return (
+      <View style={styles.app}>
+        <PopoverTouchable onPopoverDisplayed={() => console.log('Popover displayed!')}>
+          <TouchableOpacity onPress={()=> { console.log('does not work'); }}>
+            <Text> Oi </Text>
+          </TouchableOpacity>
+          <Popover
+            contentStyle={styles.content}
+            arrowStyle={styles.arrow}
+          >
+            <Text>Hello from inside popover!</Text>
+          </Popover>
+        </PopoverTouchable>
+      </View>
+    );
+  }
+}
 
-module.exports = SineApp;
+const styles = StyleSheet.create({
+  app: {
+    ...StyleSheet.absoluteFillObject,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  content: {
+    padding: 16,
+    backgroundColor: 'pink',
+    borderRadius: 8,
+  },
+  arrow: {
+    borderTopColor: 'pink',
+  },
+});
+
+module.exports = Helper;

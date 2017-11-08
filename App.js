@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import SineInitial from './screens/Initial';
-import SineApp from './screens/Helper';
+import Helper from './screens/Helper';
 
-export default class App extends Component
+class App extends Component
 {
   state =
   {
     helperActivated: false
   }
 
-  _notification = ntf =>
-  {
-    let { userInteraction } = ntf;
-    
-    if (userInteraction == true)
-      this.setState({ helperActivated: true });
-  }
+  _switch = () => this.setState({ helperActivated: !this.state.helperActivated });
   
   render()
-  {
-    if (this.state.helperActivated)
-      return <SineApp/>
-    else
-      return <SineInitial screenProps = {{ notificationHandler: this._notification }}/>
+  {  
+    return (
+      <View style = {{ flex: 1 }}>
+        <SineInitial screenProps = {{ switchHandler: this._switch }}/>
+        { this.state.helperActivated && <Helper/> }
+      </View>
+    );
   }
 }
+
+module.exports = App;
