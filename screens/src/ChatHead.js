@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Animated, Dimensions } from 'react-native';
+import { StyleSheet, View, Image, Animated, Dimensions, TouchableOpacity } from 'react-native';
 import Interactable from 'react-native-interactable';
 
 const widthFactor = Dimensions.get('window').width / 375;
 const heightFactor = (Dimensions.get('window').height - 75) / 667;
-
-const HEAD_DIAMETER = 64;
 
 class ChatHead extends Component 
 {
   constructor(props) 
   {
     super(props);
+    
     this._deltaX = new Animated.Value(0);
     this._deltaY = new Animated.Value(0);
     this._faceScale = new Animated.Value(1);
+    
+    this._balloonSize = props.balloonSize;
+    this._balloonPress = props.balloonPress.bind(this);
   }
   
   onStopInteraction(event, scaleValue) 
@@ -43,7 +45,11 @@ class ChatHead extends Component
           animatedValueX = { this._deltaX }
           animatedValueY = { this._deltaY }
           initialPosition = {{ x: 140*widthFactor, y: -270*heightFactor }}>
-          <Image style = { styles.image } source = { require('../../assets/chatHead.png') }/>
+          <TouchableOpacity onPress = { this._balloonPress }>  
+            <Image 
+              style = {{ width: this._balloonSize, height: this._balloonSize, borderRadius: 40, }} 
+              source = { require('../../assets/chatHead.png') }/>
+          </TouchableOpacity>
         </Interactable.View>
       </View>
     );
@@ -51,13 +57,6 @@ class ChatHead extends Component
 }
 
 const styles = StyleSheet.create({
-  image:
-  {
-    width: 64,
-    height: 64,
-    borderRadius: 40,
-  },
-  
   frame:
   {
     flex: 1,

@@ -1,44 +1,78 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import ChatHead from './src/ChatHead';
-import Popover, { PopoverTouchable } from 'react-native-modal-popover';
+import SineApp from './src/AppNavigation';
+import Popover from 'react-native-popover';
+import { BG_COLOR } from './src/ProjectConstants';
+
+const BALLOON_DIAMETER = 64;
+const POPOVER_PADDING = 8;
+
+var { height } = Dimensions.get('window');
 
 class Helper extends Component
 {
+  balloon;
+  
+  state =
+  {
+    popoverVisible: false,
+    popoverRect: { x: 0, y: 0, width: 0, height: 0 },
+  }
+  
+  _changePopoverVisibility()
+  {
+    let { width } = Dimensions.get('window');
+    
+    if (!this.state.popoverVisible)
+      this.setState({
+        popoverVisible: true,
+        popoverRect: { x: POPOVER_PADDING, y: POPOVER_PADDING, width: width - 2 * POPOVER_PADDING, height: 0 },
+      });
+    else
+      this.setState({
+        popoverVisible: false,
+      });
+  }
+  
   render()
   {
     return (
-      <View style={styles.app}>
-        <PopoverTouchable onPopoverDisplayed={() => console.log('Popover displayed!')}>
-          <TouchableOpacity onPress={()=> { console.log('does not work'); }}>
-            <Text> Oi </Text>
-          </TouchableOpacity>
+      <View style={{ ...StyleSheet.absoluteFillObject, flex: 1 }}>
+          <ChatHead 
+            balloonPress = { this._changePopoverVisibility.bind(this) }
+            ref = { chatHead => this.balloon = chatHead }
+            balloonSize = { BALLOON_DIAMETER }/>
+            
           <Popover
-            contentStyle={styles.content}
-            arrowStyle={styles.arrow}
+            isVisible = { this.state.popoverVisible }
+            fromRect  = { this.state.popoverRect }
+            placement = { 'bottom' }
+            onClose   = { this._changePopoverVisibility.bind(this) }
+            contentStyle = { styles.content }
+            arrowStyle   = { styles.arrow }
           >
-            <Text>Hello from inside popover!</Text>
+              <SineApp/>
           </Popover>
-        </PopoverTouchable>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  app: {
-    ...StyleSheet.absoluteFillObject,
-    alignItems: 'center',
-    justifyContent: 'center',
+  content:
+  {
     flex: 1,
-  },
-  content: {
-    padding: 16,
-    backgroundColor: 'pink',
+    padding: 6,
+    backgroundColor: BG_COLOR,
     borderRadius: 8,
+    width: 340,
+    height: height - POPOVER_PADDING * 2 - 64,
   },
-  arrow: {
-    borderTopColor: 'pink',
+  
+  arrow:
+  {
+    borderTopColor: BG_COLOR,
   },
 });
 

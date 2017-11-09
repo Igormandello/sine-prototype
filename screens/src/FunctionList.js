@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
   container: 
   {
     flex: 1,
-    paddingHorizontal: 35,
+    paddingHorizontal: 15,
     paddingTop: STATUSBAR_HEIGHT,
     backgroundColor: BG_COLOR,
   },
@@ -305,11 +305,11 @@ const styles = StyleSheet.create({
 
   list:
   {
-    flex: 0.85,
+    flex: 0.75,
     justifyContent: 'center',
     alignItems: 'stretch',
     paddingTop: 12,
-    paddingBottom: 35,
+    paddingBottom: 5,
   },
 
   textHeader:
@@ -325,7 +325,7 @@ const styles = StyleSheet.create({
     fontSize: HELPER_BODY_FONT_SIZE - 2,
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingBottom: 24,
+    paddingBottom: 14,
     paddingTop: 8,
     color: TEXT_COLOR,
   },

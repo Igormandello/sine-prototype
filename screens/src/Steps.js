@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
   NativeModules
 } from 'react-native';
-import { HELPER_BODY_FONT_SIZE, BG_COLOR, TEXT_COLOR, NAVIGATOR_COLOR, BUTTON_COLOR } from './ProjectConstants'
+import { HELPER_BODY_FONT_SIZE, BG_COLOR, TEXT_COLOR, BUTTON_COLOR } from './ProjectConstants'
 
 class Steps extends Component 
 {   
@@ -17,8 +17,9 @@ class Steps extends Component
   static navigationOptions = 
   {
     title: 'Voltar para a lista',
-    headerStyle: {
-      backgroundColor: NAVIGATOR_COLOR,
+    headerStyle:
+    {
+      backgroundColor: BG_COLOR,
     },
     headerTintColor: 'white',
   };
